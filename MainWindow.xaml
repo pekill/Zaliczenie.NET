@@ -1,0 +1,82 @@
+﻿<Window x:Class="Zaliczenie.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Zaliczenie"
+        mc:Ignorable="d"
+        Background="{DynamicResource backgroundImage}"
+        Title="Wyszukiwanie filmów i seriali po słowie" Height="600" Width="750">
+    <Window.Resources>
+        <ImageSource x:Key="imgSource">https://cdn.pixabay.com/photo/2018/01/03/01/17/film-3057394_640.jpg</ImageSource>
+        <ImageBrush x:Key="backgroundImage" ImageSource="{DynamicResource imgSource}" Opacity="0.7"></ImageBrush>
+    </Window.Resources>
+    <Grid Margin="0,0,0,0">
+        <Label x:Name="nf1" 
+            FontWeight="Bold"
+            FontSize="15"
+            
+            Content="Wpisz szukaną nazwę:" 
+            HorizontalAlignment="Left" 
+            Margin="26,27,0,0" 
+            VerticalAlignment="Top" 
+            Height="30" 
+            Width="232" Background="White"/>
+        <TextBox x:Name="tb1" 
+            HorizontalAlignment="Left" 
+            Margin="263,28,0,0" 
+            TextWrapping="Wrap" 
+            TextAlignment="Left"
+            VerticalAlignment="Top" 
+            Height="30" 
+            Width="205"/>
+        <Button x:Name="st1" 
+            FontSize="15"
+            FontFamily="sans-seri"
+            Content="Szukaj po nazwie" 
+            Click="OnSearchAllClicked"
+            HorizontalAlignment="Left" 
+            Margin="26,81,0,0" 
+            VerticalAlignment="Top" 
+            Height="30" 
+            Width="135"/>
+        <Image x:Name="img1" 
+               HorizontalAlignment="Left" 
+               Height="342" Margin="442,192,0,0" 
+               VerticalAlignment="Top" 
+               Width="286"
+               Source="{Binding Path=SelectedPosterUrl}"/>
+        <Button x:Name="sf1" 
+                FontSize="15"
+                FontFamily="sans-seri"
+                Content="Szukaj filmu" 
+                Click="OnSearchMoviesClicked"
+                HorizontalAlignment="Left" 
+                Margin="179,81,0,0" 
+                VerticalAlignment="Top" 
+                Height="30" 
+                Width="135"/>
+        <Button x:Name="ss1" 
+                FontSize="15"
+                FontFamily="sans-seri"
+                Content="Szukaj Seriali" 
+                Click="OnSearchSeriesClicked"
+                HorizontalAlignment="Left" 
+                Margin="333,81,0,0" 
+                VerticalAlignment="Top" 
+                Height="30" 
+                Width="135"/>
+        <ListBox x:Name="lb1"
+         Margin="26,192,343,151"
+         SelectionChanged="OnSelectionChanged">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel>
+                        <TextBlock Text="{Binding L}" FontWeight="Bold" />
+                        <TextBlock Text="{Binding S}" FontStyle="Italic" Margin="5,0,0,0" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>
